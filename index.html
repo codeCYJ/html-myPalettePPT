@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="index.css" />
+  <body>
+    <div class="ppt_1 ppt"><img src="image/ppt_1.png" /></div>
+    <div class="ppt_2 ppt"><img src="image/ppt_2.png" /></div>
+    <div class="ppt_3 ppt"><img src="image/ppt_3.png" /></div>
+    <div class="ppt_4 ppt"><img src="image/ppt_4.png" /></div>
+    <div class="ppt_5 ppt"><img src="image/ppt_5.png" /></div>
+    <div class="ppt_6 ppt"><img src="image/ppt_6.png" /></div>
+    <div class="ppt_7 ppt"><img src="image/ppt_7.png" /></div>
+    <div class="ppt_8 ppt">
+      <div><img src="image/ppt_8.png" /></div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/loading.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_9 ppt">
+      <div>
+        <img src="image/ppt_9-1.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/typing.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_10 ppt">
+      <div>
+        <img src="image/ppt_10.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/mypalett.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_11 ppt"><img src="image/ppt_11.png" /></div>
+    <div class="ppt_12 ppt">
+      <div>
+        <img src="image/ppt_12.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/search.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_13 ppt">
+      <div>
+        <img src="image/ppt_13.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/mediaquery2.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_14 ppt">
+      <div>
+        <img src="image/ppt_14.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/mediaquery.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_15 ppt">
+      <div>
+        <img src="image/ppt_15.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/border.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_16 ppt">
+      <div>
+        <img src="image/ppt_16.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/payment.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_17 ppt">
+      <div>
+        <img src="image/ppt_17.png" />
+      </div>
+      <div class="video">
+        <video id="video" controls muted>
+          <source src="video/game.mp4" type="video/mp4" muted="muted" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+    <div class="ppt_18 ppt"><img src="image/ppt_18.png" /></div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".video").hover(
+        function () {
+          $(this).children("video").prop("mute", true);
+          $(this).children("video")[0].play();
+        },
+
+        function () {
+          var el = $(this).children("video")[0];
+          el.pause();
+          el.currentTime = 0;
+        }
+      );
+    });
+  </script>
+
+  <script
+    type="text/javascript"
+    src="http://code.jquery.com/jquery-1.12.4.min.js"
+  ></script>
+
+  <script type="text/javascript">
+    jQuery(document).on("ready", function () {
+      jQuery(".ppt").each(function () {
+        // 개별적으로 Wheel 이벤트 적용
+        jQuery(this).on("mousewheel DOMMouseScroll", function (event) {
+          var delta = 0;
+          var moveTop = null;
+          var boxMax = jQuery(".ppt").length - 1;
+
+          var winEvent = "";
+
+          if (!winEvent) {
+            winEvent = window.event;
+          }
+
+          if (winEvent.wheelDelta) {
+            delta = winEvent.wheelDelta / 120;
+            if (window.opera) {
+              delta = -delta;
+            }
+          } else if (winEvent.detail) {
+            delta = -winEvent.detail / 3;
+          }
+
+          // 마우스휠을 위에서 아래로 이동
+          if (delta < 0) {
+            // 마지막 BOX 보다 순서값이 작은 경우에 실행
+            if (jQuery(this).index() < boxMax) {
+              console.log("▼");
+              if (jQuery(this).next() != undefined) {
+                moveTop = jQuery(this).next().offset().top;
+              }
+            }
+
+            // 마지막 BOX보다 더 아래로 내려가려고 하는경우 알림창 출력
+            else {
+              alert("마지막 페이지 입니다.");
+              return false;
+            }
+          }
+
+          // 마우스휠을 아래에서 위로 이동
+          else {
+            // 첫번째 BOX 보다 순서값이 큰 경우에 실행
+            if (jQuery(this).index() > 0) {
+              console.log("▲");
+              if (jQuery(this).prev() != undefined) {
+                moveTop = jQuery(this).prev().offset().top;
+              }
+            }
+
+            // 첫번째 BOX 더 위로 올라가려고 하는 경우 알림창 출력
+            else {
+              alert("첫번째 페이지 입니다.");
+              return false;
+            }
+          }
+
+          // 화면 이동 0.8초(800)
+          jQuery("html,body")
+            .stop()
+            .animate(
+              {
+                scrollTop: moveTop + "px",
+              },
+              {
+                duration: 400,
+                complete: function () {},
+              }
+            );
+        });
+      });
+    });
+  </script>
+</html>
